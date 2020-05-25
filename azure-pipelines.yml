@@ -3,13 +3,28 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
+# specific branch build with batching
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/repos/github?view=azure-devops&tabs=yaml#batching-ci-runs
 trigger:
-- master
+  batch: true
+  branches:
+    include:
+    - master
+
+resources:
+  repositories:
+    - repository: 'ort_repo'
+      type: github
+      name: 'oss-review-toolkit/ort'
+      endpoint: 'github.com_VaeterchenFrost'
+
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- checkout: self
+  path: 's'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -20,3 +35,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- checkout: 'ort_repo'
