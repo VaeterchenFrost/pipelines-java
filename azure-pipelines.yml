@@ -16,7 +16,7 @@ variables:
 
 resources:
   repositories:
-    - repository: '$(ortfolder)'
+    - repository: 'ort_repo'
       type: github
       name: 'oss-review-toolkit/ort'
       endpoint: 'github.com_VaeterchenFrost'
@@ -38,4 +38,4 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- checkout: '$(ortfolder)'
+- checkout: 'ort_repo'
