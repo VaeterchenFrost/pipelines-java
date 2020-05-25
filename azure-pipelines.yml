@@ -24,8 +24,6 @@ resources:
 pool:
   vmImage: 'ubuntu-latest'
 
-
-
 steps:
 - checkout: self
   path: 's'
@@ -41,6 +39,3 @@ steps:
     goals: 'package'
 
 - checkout: '$(ortfolder)'
-
-
-
