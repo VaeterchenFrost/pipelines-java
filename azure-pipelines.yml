@@ -11,16 +11,20 @@ trigger:
     include:
     - master
 
+variables:
+  ortfolder: 'ort_repo'
+
 resources:
   repositories:
-    - repository: 'ort_repo'
+    - repository: '$(ortfolder)'
       type: github
       name: 'oss-review-toolkit/ort'
       endpoint: 'github.com_VaeterchenFrost'
 
-
 pool:
   vmImage: 'ubuntu-latest'
+
+
 
 steps:
 - checkout: self
@@ -35,4 +39,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- checkout: 'ort_repo'
+
+- checkout: '$(ortfolder)'
+
+
+
