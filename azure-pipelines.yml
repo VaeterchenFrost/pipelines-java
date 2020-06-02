@@ -12,7 +12,7 @@ trigger:
     - master
 
 variables:
-  ortfolder: 'ort_repo'
+  ortfolder: ort_repo
   buildConfiguration: 'Release'
 
 resources:
