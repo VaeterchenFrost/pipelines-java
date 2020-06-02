@@ -12,7 +12,7 @@ trigger:
     - master
 
 variables:
-  ortfolder: ort_repo
+  ortfolder: 'ort_repo'
   buildConfiguration: 'Release'
 
 resources:
@@ -39,7 +39,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- checkout: $(ortfolder)
+- checkout: 'ort_repo'
   fetchDepth: 1
   path: $(ortfolder)
 - script: dir $(Build.SourcesDirectory)
