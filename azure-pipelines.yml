@@ -28,16 +28,16 @@ pool:
 steps:
 - checkout: self
   path: 's'
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+# - task: Maven@3
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     mavenOptions: '-Xmx3072m'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.8'
+#     jdkArchitectureOption: 'x64'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#     goals: 'package'
 
 - checkout: 'ort_repo'
   fetchDepth: 1
@@ -45,7 +45,7 @@ steps:
 - script: dir $(Build.SourcesDirectory)
   displayName: 'Inspect SourcesDirectory'
 - script: |
-    dir
     cd ..
     cd $(ortfolder)
+    dir
   displayName: 'Running ort'
