@@ -46,5 +46,6 @@ steps:
   displayName: 'Inspect SourcesDirectory'
 - script: |
     dir
-  workingDirectory: $(ortfolder)
+    cd ..
+    cd $(ortfolder)
   displayName: 'Running ort'
