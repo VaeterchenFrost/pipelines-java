@@ -49,4 +49,8 @@ steps:
     cd $(ortfolder)
     dir
     ./gradlew installDist
-  displayName: 'Running ort'
+  displayName: 'Installing ort'
+- script: |
+    cd $(Build.SourcesDirectory)
+    /opt/ort/bin/ort scan -f JSON,YAML -i out/results/current-result.yml -o out/results/scanner ln -frs out/results/scanner/scan-result.yml out/results/current-result.yml
+  displayName: 'Scanning'
