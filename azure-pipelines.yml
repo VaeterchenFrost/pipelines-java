@@ -13,6 +13,7 @@ trigger:
 
 variables:
   ortfolder: 'ort_repo'
+  buildConfiguration: 'Release'
 
 resources:
   repositories:
@@ -38,5 +39,12 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- checkout: 'ort_repo'
+- checkout: $(ortfolder)
+  fetchDepth: 1
+  path: $(ortfolder)
 - script: dir $(Build.SourcesDirectory)
+  displayName: 'Inspect SourcesDirectory'
+- script: |
+    dir
+  workingDirectory: $(ortfolder)
+  displayName: 'Running ort'
