@@ -48,7 +48,7 @@ steps:
     cd ..
     cd $(ortfolder)
     dir
-    ./gradlew installDist
+    ./gradlew cli:run --args="--help"
   displayName: 'Installing ort'
 - script: |
     cd $(Build.SourcesDirectory)
