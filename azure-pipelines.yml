@@ -48,4 +48,5 @@ steps:
     cd ..
     cd $(ortfolder)
     dir
+    ./gradlew installDist
   displayName: 'Running ort'
