@@ -39,3 +39,4 @@ steps:
     goals: 'package'
 
 - checkout: 'ort_repo'
+- script: dir $(Build.SourcesDirectory)
